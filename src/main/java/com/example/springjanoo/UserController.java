@@ -3,10 +3,12 @@ package com.example.springjanoo;
 import com.example.springjanoo.UserDTO;
 import com.example.springjanoo.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Controller
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -17,6 +19,10 @@ public class UserController {
     public UserDTO insertUser(@RequestBody UserDTO user) {
         return userService.insertUser(user);
     }
+
+    @ResponseBody
+    @GetMapping("/members")
+    public String members() { return "members"; }
 
     @GetMapping("")
     public List<UserDTO> getAllUsers() {
@@ -43,5 +49,7 @@ public class UserController {
         userService.deleteUser(userName);
     }
 }
+
+
 
 //
